@@ -27,7 +27,6 @@ public class UsuarioActivity1 extends AppCompatActivity {
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Usuario.getINSTANCE().setNome(edtNomeUsuario.getText().toString());
                 db.addUsuario();
 
                 onBackPressed();

@@ -45,10 +45,23 @@ public class MainActivity extends AppCompatActivity {
         buttonContinuar = findViewById(R.id.buttonContinuar);
 
         imageLogo.setImageResource(R.drawable.quiz);
+
+        buttonContinuar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pergunta = new Intent(MainActivity.this, PerguntaActivity.class);
+                startActivity(pergunta);
+                onBackPressed();
+            }
+        });
     }
 
     public void openUsuario() {
         Intent activityUsuario = new Intent(MainActivity.this, UsuarioActivity1.class);
         startActivity(activityUsuario);
     }
+
+
+
+
 }

@@ -160,4 +160,34 @@ public class DataBase extends SQLiteOpenHelper {
 
         }
     }
+
+    public String retPergunta(int ind){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "select PERGUNDA from pergunta where id = ind";
+        Cursor cursor = db.rawQuery(sql, null);
+        return sql;
+    }
+
+    public String retResposta(int resp, int nro){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "select RESPOSTA FROM resposta where ID_PERGUNTA = resp and rownum = nro";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        return sql;
+    }
+
+    public int retCorreta(int resp, int nro){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "select CORRETA from resposta where ID_pergunta = resp and rownum = nro";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        int correta;
+
+        return correta = Integer.parseInt(sql);
+    }
+
+
 }
