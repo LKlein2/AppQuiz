@@ -1,9 +1,17 @@
 package com.example.appquiz;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class DataBase extends SQLiteOpenHelper {
     private static final int VERSAO_BANCO = 1;
@@ -33,6 +41,7 @@ public class DataBase extends SQLiteOpenHelper {
         sql += "create table RESPOSTA (";
         sql += "ID integer primary key autoincrement,";
         sql += "ID_PERGUNTA integer,";
+        sql += "REPOSTA text,";
         sql += "CORRETA integer check (CORRETA = 1 or CORRETA = 0) default 0,";
         sql += "constraint FK_RESPOSTA_ID_PERGUNTA foreign key (ID_PERGUNTA) references PERGUNTA(ID));";
 
@@ -41,6 +50,80 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
+
+    public void testaPerguntas(Context context) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "select MAX(ID) from PERGUNTA";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+            if (cursor.getInt(0) > 10) {
+                criaPerguntas(context);
+            }
+        }
+    }
+
+    private int ultimaPergunta() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "select max(ID) from PERGUNTA";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+            return cursor.getInt(0);
+        }
+        return 0;
+    }
+
+    private int insertPergunta(String pergunta) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sql = "insert into PERGUNTA () values ('" + pergunta + "');";
+        db.execSQL(sql);
+
+        sql = "select max(ID) from PERGUNTA;";
+        Cursor cursor = db.rawQuery(sql, null);
+        if (!cursor.moveToFirst()) {
+            return cursor.getInt(0);
+        }
+        return 0;
+    }
+
+    private void insertResposta(int pergunta, String resposta, int correta) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sql = "insert into RESPOSTA (ID_PERGUNTA, RESPOSTA, CORRETA) values (" + pergunta + ", '" + resposta + "', " + correta + ");";
+        db.execSQL(sql);
+    }
+
+    public void criaPerguntas(Context current) {
+        try {
+            AssetManager a = current.getResources().getAssets();
+            InputStream inputStream = a.open("arq.txt");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+            String linha;
+            int controller = 0;
+            int resposta = 0;
+            int pergunta = 0;
+            while ((linha = bufferedReader.readLine()) != null) {
+                controller += 1;
+                if (controller == 1) {
+                    pergunta = insertPergunta(linha);
+                    resposta = 1;
+                } else if (controller <= 4) {
+                    insertResposta(pergunta,linha,resposta);
+                    resposta = 0;
+                } else {
+                    controller = 0;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addUsuario () {
