@@ -24,11 +24,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         doInitialize();
-        db.retUsuario();
 
+
+        db.retUsuario();
         if (Usuario.getINSTANCE().getNome() == "") {
             openUsuario();
         }
+        if (Usuario.u_pontuacao == 0) {
+            buttonContinuar.setText(R.string.novo_jogo);
+        }
+
+        db.testaPerguntas(this);
 
     }
 
