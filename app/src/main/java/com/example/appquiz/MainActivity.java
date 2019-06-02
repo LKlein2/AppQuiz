@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.app.Activity;
+import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView imageLogo;
     private TextView txtNomeUsuario;
     private Button buttonRanking, buttonContinuar;
+
 
     private DataBase db = new DataBase(this);
 
