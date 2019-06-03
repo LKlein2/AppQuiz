@@ -36,6 +36,7 @@ public class PerguntaActivity extends AppCompatActivity {
         btnPular = findViewById(R.id.btnPular);
 
         textPerg.setText(db.retPergunta(Usuario.u_fase));
+
         btnR1.setText(db.retResposta(Usuario.u_fase, 1));
         btnR2.setText(db.retResposta(Usuario.u_fase, 2));
         btnR3.setText(db.retResposta(Usuario.u_fase, 3));
@@ -50,7 +51,6 @@ public class PerguntaActivity extends AppCompatActivity {
                 }else{
                     proxFase(Usuario.u_fase);
                 }
-                onBackPressed();
             }
         });
 
@@ -64,7 +64,6 @@ public class PerguntaActivity extends AppCompatActivity {
                 }else{
                     proxFase(Usuario.u_fase);
                 }
-                onBackPressed();
             }
         });
 
@@ -78,7 +77,6 @@ public class PerguntaActivity extends AppCompatActivity {
                 }else{
                     proxFase(Usuario.u_fase);
                 }
-                onBackPressed();
             }
 
         });
@@ -96,7 +94,6 @@ public class PerguntaActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                onBackPressed();
             }
         });
 

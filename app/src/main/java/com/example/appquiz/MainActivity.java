@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent pergunta = new Intent(MainActivity.this, PerguntaActivity.class);
                 startActivity(pergunta);
-                onBackPressed();
             }
         });
     }
