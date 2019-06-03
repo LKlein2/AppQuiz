@@ -1,11 +1,12 @@
 package com.example.appquiz;
-import android.os.Bundle;
+
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PerguntaActivity extends AppCompatActivity {
+public class activity_pergunta extends AppCompatActivity {
 
     private TextView textPerg;
     private Button btnR1, btnR2, btnR3, btnSair, btnPular;
@@ -13,16 +14,15 @@ public class PerguntaActivity extends AppCompatActivity {
 
     private DataBase db = new DataBase(this);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pergunta);
+        setContentView(R.layout.activity_pergunta);
 
         doInitialize();
     }
 
-    public void proxFase(int atual){
+    public void proxFase(int atual) {
 
     }
 
@@ -46,9 +46,9 @@ public class PerguntaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int resp = 0;
 
-                if(db.retCorreta(Usuario.u_fase, 1) == 1){
+                if (db.retCorreta(Usuario.u_fase, 1) == 1) {
                     proxFase(Usuario.u_fase);
-                }else{
+                } else {
                     proxFase(Usuario.u_fase);
                 }
             }
@@ -59,9 +59,9 @@ public class PerguntaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int resp = 0;
 
-                if(db.retCorreta(Usuario.u_fase, 2) == 1){
+                if (db.retCorreta(Usuario.u_fase, 2) == 1) {
                     proxFase(Usuario.u_fase);
-                }else{
+                } else {
                     proxFase(Usuario.u_fase);
                 }
             }
@@ -72,9 +72,9 @@ public class PerguntaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int resp = 0;
 
-                if(db.retCorreta(Usuario.u_fase, 3) == 1){
+                if (db.retCorreta(Usuario.u_fase, 3) == 1) {
                     proxFase(Usuario.u_fase);
-                }else{
+                } else {
                     proxFase(Usuario.u_fase);
                 }
             }
@@ -96,12 +96,6 @@ public class PerguntaActivity extends AppCompatActivity {
 
             }
         });
-
     }
-
-
-
-
-
-
 }
+

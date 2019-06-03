@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         db.testaPerguntas(this);
-
     }
 
     public void doInitialize() {
@@ -49,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
         buttonContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pergunta = new Intent(MainActivity.this, PerguntaActivity.class);
-                startActivity(pergunta);
+                openPergunta();
             }
         });
     }
@@ -58,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
     public void openUsuario() {
         Intent activityUsuario = new Intent(MainActivity.this, UsuarioActivity1.class);
         startActivity(activityUsuario);
+    }
+
+    public void openPergunta() {
+        Intent pergunta = new Intent(MainActivity.this, activity_pergunta.class);
+        startActivity(pergunta);
     }
 
 

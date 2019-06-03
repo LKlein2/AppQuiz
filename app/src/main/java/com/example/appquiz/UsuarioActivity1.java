@@ -32,6 +32,5 @@ public class UsuarioActivity1 extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
     }
 }
