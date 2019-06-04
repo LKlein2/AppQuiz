@@ -164,7 +164,7 @@ public class DataBase extends SQLiteOpenHelper {
     public String retPergunta(int ind){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sql = "select PERGUNTA from pergunta where id =" + ind;
+        String sql = "select PERGUNTA from pergunta where id = " + ind;
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
             return cursor.getString(0);
@@ -184,7 +184,7 @@ public class DataBase extends SQLiteOpenHelper {
         if (cursor.moveToFirst() == true) {
             do {
                 retorno[i][0] = cursor.getString(0);
-                retorno[i][1] = cursor.getString(0);
+                retorno[i][1] = cursor.getString(1);
                 i++;
             } while (cursor.moveToNext());
         }

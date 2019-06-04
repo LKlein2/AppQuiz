@@ -13,21 +13,27 @@
 
         <LinearLayout
             android:layout_width="415dp"
-            android:layout_height="175dp"
+            android:layout_height="262dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteY="4dp">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="131dp" />
 
             <TextView
                 android:id="@+id/textPerg"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="148dp"
                 android:text="TextView"
-                android:textSize="24sp" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp"
+                tools:text="Você gosta de jogar?" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="349dp"
+            android:layout_height="511dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteY="181dp">
 
@@ -39,61 +45,35 @@
                 android:id="@+id/btnR1"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:text="Button" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="35dp" />
+                android:layout_margin="7dp"
+                android:background="@color/colorPrimary"
+                android:text="Button"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                tools:text="Sim" />
 
             <Button
                 android:id="@+id/btnR2"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:text="Button" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="35dp" />
+                android:layout_margin="7dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Button"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                tools:text="Não" />
 
             <Button
                 android:id="@+id/btnR3"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:text="Button" />
+                android:layout_margin="7dp"
+                android:background="@color/colorAccent"
+                android:text="Button"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                tools:text="Talvez" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="199dp"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="147dp"
-            tools:layout_editor_absoluteY="532dp">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnSair"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/btnPular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

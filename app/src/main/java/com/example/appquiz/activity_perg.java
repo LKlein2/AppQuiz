@@ -21,14 +21,18 @@ public class activity_perg extends AppCompatActivity {
         setContentView(R.layout.activity_perg);
 
         doInitialize();
+
+        proxFase();
     }
 
-    public void proxFase(int atual) {
+    public void proxFase() {
+        textPerg.setText(db.retPergunta(Usuario.u_fase + 1));
 
-
-
+        respostas = db.retResposta(Usuario.u_fase + 1);
+        btnR1.setText(respostas[0][0]);
+        btnR2.setText(respostas[1][0]);
+        btnR3.setText(respostas[2][0]);
     }
-
 
     public String[][] respostas;
     public void doInitialize() {
@@ -36,24 +40,15 @@ public class activity_perg extends AppCompatActivity {
         btnR1 = findViewById(R.id.btnR1);
         btnR2 = findViewById(R.id.btnR2);
         btnR3 = findViewById(R.id.btnR3);
-        btnSair = findViewById(R.id.btnSair);
-        btnPular = findViewById(R.id.btnPular);
-
-        textPerg.setText(db.retPergunta(Usuario.u_fase + 1));
-        respostas = db.retResposta(Usuario.u_fase + 1);
-        btnR1.setText(respostas[0][1]);
-        btnR2.setText(respostas[1][1]);
-        btnR3.setText(respostas[2][1]);
 
         btnR1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int resp = 0;
-
-                if (respostas[0][1] == "1") {
-                    proxFase(Usuario.u_fase);
+                if (respostas[0][1].equals("1")) {
+                    Usuario.u_fase++;
+                    proxFase();
                 } else {
-                    proxFase(Usuario.u_fase);
+                    proxFase();
                 }
             }
         });
@@ -61,12 +56,11 @@ public class activity_perg extends AppCompatActivity {
         btnR2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int resp = 0;
-
-                if (respostas[1][1] == "1") {
-                    proxFase(Usuario.u_fase);
+                if (respostas[1][1].equals("1")) {
+                    Usuario.u_fase++;
+                    proxFase();
                 } else {
-                    proxFase(Usuario.u_fase);
+                    proxFase();
                 }
             }
         });
@@ -74,34 +68,14 @@ public class activity_perg extends AppCompatActivity {
         btnR3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int resp = 0;
-
-                if (respostas[2][1] == "1") {
-                    proxFase(Usuario.u_fase);
+                if (respostas[2][1].equals("1")) {
+                    Usuario.u_fase++;
+                    proxFase();
                 } else {
-                    proxFase(Usuario.u_fase);
+                    proxFase();
                 }
             }
-
         });
-
-        btnSair.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                onBackPressed();
-            }
-        });
-
-        btnPular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
-
-
     }
 
 }

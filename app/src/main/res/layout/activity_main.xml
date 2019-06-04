@@ -11,6 +11,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="67dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -54,10 +58,13 @@
                 android:id="@+id/buttonRanking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/ranking"
                 android:layout_marginLeft="150px"
-                android:layout_marginRight="150px"/>
+                android:layout_marginRight="150px"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="@string/ranking"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="5dp"/>
 
         </LinearLayout>
 
@@ -73,7 +80,9 @@
                 android:layout_marginLeft="150px"
                 android:layout_marginRight="150px"
                 android:layout_weight="1"
-                android:text="@string/Continuar" />
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/Continuar"
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
 
