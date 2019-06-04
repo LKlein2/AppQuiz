@@ -6,7 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class activity_pergunta extends AppCompatActivity {
+public class activity_perg extends AppCompatActivity {
+
 
     private TextView textPerg;
     private Button btnR1, btnR2, btnR3, btnSair, btnPular;
@@ -17,7 +18,7 @@ public class activity_pergunta extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pergunta);
+        setContentView(R.layout.activity_perg);
 
         doInitialize();
     }
@@ -35,11 +36,13 @@ public class activity_pergunta extends AppCompatActivity {
         btnSair = findViewById(R.id.btnSair);
         btnPular = findViewById(R.id.btnPular);
 
+        /*
         textPerg.setText(db.retPergunta(Usuario.u_fase));
 
         btnR1.setText(db.retResposta(Usuario.u_fase, 1));
         btnR2.setText(db.retResposta(Usuario.u_fase, 2));
         btnR3.setText(db.retResposta(Usuario.u_fase, 3));
+        */
 
         btnR1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +99,8 @@ public class activity_pergunta extends AppCompatActivity {
 
             }
         });
-    }
-}
 
+
+    }
+
+}

@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doInitialize() {
-        imageLogo = findViewById(R.id.imageLogo);
-        txtNomeUsuario = findViewById(R.id.txtNomeUsuario);
-        buttonRanking  = findViewById(R.id.buttonRanking);
+        imageLogo       = findViewById(R.id.imageLogo);
+        txtNomeUsuario  = findViewById(R.id.txtNomeUsuario);
+        buttonRanking   = findViewById(R.id.buttonRanking);
         buttonContinuar = findViewById(R.id.buttonContinuar);
 
         imageLogo.setImageResource(R.drawable.quiz);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         buttonContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPergunta();
+                openPerg();
             }
         });
     }
@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(activityUsuario);
     }
 
-    public void openPergunta() {
-        Intent pergunta = new Intent(MainActivity.this, activity_pergunta.class);
+    public void openPerg() {
+        Intent pergunta = new Intent(MainActivity.this, activity_perg.class);
         startActivity(pergunta);
     }
 

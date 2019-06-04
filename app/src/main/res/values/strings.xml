@@ -4,4 +4,6 @@
     <string name="ranking">Ranking</string>
     <string name="Nome_usuario">-</string>
     <string name="Continuar">Continuar</string>
+    <string name="title_activity_perguntas">activity_perguntas</string>
+    <string name="title_activity_perg">activity_perg</string>
 </resources>
