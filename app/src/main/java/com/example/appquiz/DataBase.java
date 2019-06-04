@@ -164,29 +164,53 @@ public class DataBase extends SQLiteOpenHelper {
     public String retPergunta(int ind){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sql = "select PERGUNDA from pergunta where id =" + ind;
+        String sql = "select PERGUNTA from pergunta where id =" + ind;
         Cursor cursor = db.rawQuery(sql, null);
-
-        return cursor.getString(0);
+        if (cursor.moveToFirst()) {
+            return cursor.getString(0);
+        }
+        return "";
     }
 
-    public String retResposta(int resp, int nro){
+    public String[][] retResposta(int resp){
+        String[][] retorno = new String[3][2];
+        int i = 0;
+
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sql = "select RESPOSTA FROM resposta where ID_PERGUNTA = " +  resp ;
+        String sql = "select RESPOSTA, CORRETA FROM resposta where ID_PERGUNTA = " +  resp ;
         Cursor cursor = db.rawQuery(sql, null);
 
-        return cursor.getString(0);
+        if (cursor.moveToFirst() == true) {
+            do {
+                retorno[i][0] = cursor.getString(0);
+                retorno[i][1] = cursor.getString(0);
+                i++;
+            } while (cursor.moveToNext());
+        }
+        return retorno;
     }
 
-    public int retCorreta(int resp, int nro){
+    public int[] retCorreta(int resp, int nro){
+        int[] retorno = new int[3];
+
         SQLiteDatabase db = this.getReadableDatabase();
+
 
         String sql = "select CORRETA from resposta where ID_pergunta =" + resp;
         Cursor cursor = db.rawQuery(sql, null);
+        int i = 0;
+
+        if(cursor.moveToFirst() == true){
+            do{
+                retorno[i] = cursor.getInt(0);
+                i++;
+            }while (cursor.moveToNext());
+        }
+
+        return retorno;
 
 
-        return cursor.getInt(0);
     }
 
 

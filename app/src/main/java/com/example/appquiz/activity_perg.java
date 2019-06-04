@@ -25,9 +25,12 @@ public class activity_perg extends AppCompatActivity {
 
     public void proxFase(int atual) {
 
+
+
     }
 
 
+    public String[][] respostas;
     public void doInitialize() {
         textPerg = findViewById(R.id.textPerg);
         btnR1 = findViewById(R.id.btnR1);
@@ -36,20 +39,18 @@ public class activity_perg extends AppCompatActivity {
         btnSair = findViewById(R.id.btnSair);
         btnPular = findViewById(R.id.btnPular);
 
-        /*
-        textPerg.setText(db.retPergunta(Usuario.u_fase));
-
-        btnR1.setText(db.retResposta(Usuario.u_fase, 1));
-        btnR2.setText(db.retResposta(Usuario.u_fase, 2));
-        btnR3.setText(db.retResposta(Usuario.u_fase, 3));
-        */
+        textPerg.setText(db.retPergunta(Usuario.u_fase + 1));
+        respostas = db.retResposta(Usuario.u_fase + 1);
+        btnR1.setText(respostas[0][1]);
+        btnR2.setText(respostas[1][1]);
+        btnR3.setText(respostas[2][1]);
 
         btnR1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int resp = 0;
 
-                if (db.retCorreta(Usuario.u_fase, 1) == 1) {
+                if (respostas[0][1] == "1") {
                     proxFase(Usuario.u_fase);
                 } else {
                     proxFase(Usuario.u_fase);
@@ -62,7 +63,7 @@ public class activity_perg extends AppCompatActivity {
             public void onClick(View v) {
                 int resp = 0;
 
-                if (db.retCorreta(Usuario.u_fase, 2) == 1) {
+                if (respostas[1][1] == "1") {
                     proxFase(Usuario.u_fase);
                 } else {
                     proxFase(Usuario.u_fase);
@@ -75,7 +76,7 @@ public class activity_perg extends AppCompatActivity {
             public void onClick(View v) {
                 int resp = 0;
 
-                if (db.retCorreta(Usuario.u_fase, 3) == 1) {
+                if (respostas[2][1] == "1") {
                     proxFase(Usuario.u_fase);
                 } else {
                     proxFase(Usuario.u_fase);
