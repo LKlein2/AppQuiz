@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         db.retUsuario();
         if (Usuario.getINSTANCE().getNome() == "") {
             openUsuario();
-        }
-        if (Usuario.u_pontuacao == 0) {
             buttonContinuar.setText(R.string.novo_jogo);
         }
 

@@ -178,7 +178,7 @@ public class DataBase extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sql = "select RESPOSTA, CORRETA FROM resposta where ID_PERGUNTA = " +  resp ;
+        String sql = "select RESPOSTA, CORRETA FROM resposta where ID_PERGUNTA = " +  resp + " order by RAND()" ;
         Cursor cursor = db.rawQuery(sql, null);
 
         if (cursor.moveToFirst() == true) {
