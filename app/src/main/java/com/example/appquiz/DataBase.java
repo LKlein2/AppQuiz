@@ -172,13 +172,33 @@ public class DataBase extends SQLiteOpenHelper {
         return "";
     }
 
+    public void incrementaFase(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        String sql = "update usuario set fase = fase + 1";
+        Cursor cursor = db.rawQuery(sql, null);
+    }
+
+    public void aumentaPonto(){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        String sql = "update usuario set pontuacao =  pontuacao + 10";
+        Cursor cursor = db.rawQuery(sql, null);
+
+    }
+
+
+
     public String[][] retResposta(int resp){
         String[][] retorno = new String[3][2];
         int i = 0;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sql = "select RESPOSTA, CORRETA FROM resposta where ID_PERGUNTA = " +  resp + " order by RAND()" ;
+        String sql = "select RESPOSTA, CORRETA FROM resposta where ID_PERGUNTA = " +  resp;
         Cursor cursor = db.rawQuery(sql, null);
 
         if (cursor.moveToFirst() == true) {

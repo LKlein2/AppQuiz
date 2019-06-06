@@ -48,22 +48,26 @@ public class activity_perg extends AppCompatActivity {
         Usuario.u_fase++;
         if (respostas[i][1].equals("1")) {
             Aux.setBackgroundColor(Color.GREEN);
+            db.aumentaPonto();
+            db.incrementaFase();
+
         } else {
             Aux.setBackgroundColor(Color.RED);
+            db.incrementaFase();
         }
 
         new Thread() {
             public void run() {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            handler.post(new Runnable() {
+                public void run() {
+                    proxFase();
                 }
-                handler.post(new Runnable() {
-                    public void run() {
-                        proxFase();
-                    }
-                });
+            });
 
             }
         }.start();
