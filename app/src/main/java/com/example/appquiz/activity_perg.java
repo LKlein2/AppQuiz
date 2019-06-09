@@ -1,5 +1,6 @@
 package com.example.appquiz;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,11 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.os.Handler;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 public class activity_perg extends AppCompatActivity {
 
     private TextView textPerg;
-    private Button btnR1, btnR2, btnR3, btnSair, btnPular;
+    private Button btnR1, btnR2, btnR3;
     private Handler handler;
 
     private DataBase db = new DataBase(this);
@@ -46,7 +49,21 @@ public class activity_perg extends AppCompatActivity {
         else Aux = btnR3;
 
         Usuario.u_fase++;
-        if (respostas[i][1].equals("1")) {
+        if(Usuario.u_fase > 9){
+            AlertDialog.Builder dialogo = new AlertDialog.Builder(activity_perg.this);
+            dialogo.setTitle("Fim do jogo");
+            dialogo.setMessage("Sua pontuação é: " + Usuario.u_pontuacao);
+            dialogo.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent MainActivity = new Intent(activity_perg.this, MainActivity.class);
+                    startActivity(MainActivity);
+                }
+            });
+
+            dialogo.show();
+        }
+
+        else if (respostas[i][1].equals("1")) {
             Aux.setBackgroundColor(Color.GREEN);
             db.aumentaPonto();
             db.incrementaFase();

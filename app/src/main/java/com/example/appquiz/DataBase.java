@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.database.Cursor;
+import java.util.Random;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -182,12 +183,8 @@ public class DataBase extends SQLiteOpenHelper {
 
     public void aumentaPonto(){
 
-        SQLiteDatabase db = this.getWritableDatabase();
 
-
-        String sql = "update usuario set pontuacao =  pontuacao + 10";
-        Cursor cursor = db.rawQuery(sql, null);
-
+        Usuario.u_pontuacao += 10;
     }
 
 
@@ -197,9 +194,9 @@ public class DataBase extends SQLiteOpenHelper {
         int i = 0;
 
         SQLiteDatabase db = this.getReadableDatabase();
-
-        String sql = "select RESPOSTA, CORRETA FROM resposta where ID_PERGUNTA = " +  resp;
+        String sql = "select RESPOSTA, CORRETA FROM resposta where ID_PERGUNTA = " + resp + " order by random()";
         Cursor cursor = db.rawQuery(sql, null);
+
 
         if (cursor.moveToFirst() == true) {
             do {
